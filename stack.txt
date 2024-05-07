@@ -1,0 +1,639 @@
+#stack :- 
+(Q-1) user define stack
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> sl = new Stack<>();
+        int n;
+        System.out.print("enter value of n = ");
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        for (int i=0;i<n;i++){
+            System.out.print("enter elements = ");
+            int num = sc.nextInt();
+            sl.push(num);
+        }
+        System.out.println(sl);
+    }
+}
+
+
+(Q-2) move stack element
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> sl = new Stack<>();
+        sl.push(1);
+        sl.push(2);
+        sl.push(3);
+        sl.push(4);
+        sl.push(5);
+        System.out.println(sl);
+        Stack <Integer> rl = new Stack<>();
+        while (sl.size() > 0){
+            rl.push(sl.pop());
+        }
+        System.out.println(rl);
+    }
+}
+
+(Q-3) reverse order of element in stack 
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> sl = new Stack<>();
+        sl.push(1);
+        sl.push(2);
+        sl.push(3);
+        sl.push(4);
+        sl.push(5);
+        System.out.println(sl);
+        Stack <Integer> rl = new Stack<>();
+        while (sl.size() > 0){
+            rl.push(sl.pop());
+        }
+        System.out.println(rl);
+
+        Stack <Integer> pl = new Stack<>();
+        while (rl.size() > 0){
+            pl.push(rl.pop());
+        }
+        System.out.println(pl);
+        while (pl.size() > 0){
+            sl.push(pl.pop());
+        }
+        System.out.println(sl);
+    }
+}
+
+(Q-4) push element in bottom if stack
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Stack st = new Stack<>();
+        st.push(1);
+        st.push(3);
+        st.push(5);
+        st.push(7);
+        st.push(9);
+        System.out.println(st);
+        Stack rt = new Stack<>();
+        while (st.size() > 0){
+           rt.push(st.pop());
+        }
+        rt.push(19);
+        System.out.println(rt);
+        while (rt.size() > 0){
+            st.push(rt.pop());
+        }
+        System.out.println(st);
+    }
+}
+
+(Q-5) push element in any index of stack
+
+#mehod-1)m-e-r-a
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(3);
+        st.push(5);
+        st.push(7);
+        st.push(8);
+        System.out.println(st);
+        Stack <Integer> rt = new Stack<>();
+        int index =2;
+        int x = 4;
+        while (st.size() > index){
+            rt.push(st.pop());
+        }
+        st.push(x);
+        while (rt.size() > 0){
+            st.push(rt.pop());
+        }
+        System.out.println(st);
+    }
+}
+
+#method-2)
+import java.util.*;
+public class Main {
+    public static void removeBottom(Stack <Integer> st,Stack <Integer> rt){
+        while (st.size() > 1){
+            rt.push(st.pop());
+        }
+        st.pop();
+        while (rt.size() > 0) {
+            st.push(rt.pop());
+        }
+    }
+    public static void main(String[] args) {
+        Stack <Integer> st  = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+        Stack <Integer> rt  = new Stack<>();
+        System.out.println(st);
+        System.out.println(rt);
+        removeBottom(st,rt);
+        System.out.println(st);
+        System.out.println(rt);
+    }
+}
+
+(Q-6) push element in array
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(3);
+        st.push(5);
+        st.push(7);
+        st.push(8);
+        System.out.println(st);
+        int n = st.size();
+        int[] arr = new int[n];
+        for (int i=n-1;i>=0;i--){
+
+            arr[i] = st.pop();
+        }
+        for (int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+            st.push(arr[i]);
+        }
+        System.out.println();
+        System.out.println(st);
+    }
+}
+
+(Q-7) reverse an array using recurssion ?
+
+import java.util.*;
+public class Main {
+    public static void displayReverse(Stack <Integer> st){
+        if (st.size() ==0){
+            return;
+        }
+        int top = st.pop();
+        System.out.print(top+" ");
+        displayReverse(st);
+        st.push(top);
+
+    }
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+        System.out.println(st);
+        displayReverse(st);
+        System.out.println();
+        System.out.println(st);
+    }
+}
+
+(Q-8) remove bottom element in stack using recurssion.
+
+import java.util.*;
+public class Main {
+    public static void displayReverse(Stack <Integer> st){
+        if (st.size() ==1){
+            st.pop();
+            return;
+        }
+        int top = st.pop();
+        System.out.print(top+" ");
+        displayReverse(st);
+        st.push(top);
+
+    }
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+        System.out.println(st);
+        displayReverse(st);
+        System.out.println();
+        System.out.println(st);
+    }
+}
+
+#UnderFlow :- empty stack m pop() or peak() use kerne pe aata h.then u get empty stack exception
+
+eg:-1)
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop(); //error
+        System.out.println(st);
+    }
+}
+
+
+eg:-2)
+import java.util.Stack;
+public class Main {
+    public static void main(String[] args) {
+        Stack <Integer> st = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+        st.pop();
+        System.out.println(st);
+       st.peek(); //error
+        System.out.println(st);
+    }
+}
+
+#Overflow :- 
+
+# array implementation in stack
+
+public class Main {
+    static  class Stack {
+        int[] arr = new int[50];
+        int indx =0;
+        void push(int x) {
+            if (isFull()){
+                System.out.println("stack is full");
+                return;
+            }
+            arr[indx] = x;
+            indx++;
+        }
+        int peak(){
+            if (indx==0){
+                System.out.println("Stack is empty ");
+                return -1;
+            }
+            return arr[indx-1];
+        }
+        int pop(){
+            if (indx==0){
+                System.out.println("Stack is empty ");
+                return -1;
+            }
+            int top = arr[indx-1];
+            arr[indx-1]=0;
+            indx--;
+            return top;
+        }
+        void display(){
+            for (int i=0;i<=indx-1;i++){
+                System.out.print(arr[i]+" ");
+
+            }
+            System.out.println();
+        }
+        int Size(){
+            return indx;
+        }
+        boolean isEmpty(){
+            if (indx==0){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        boolean isFull(){
+            if (indx==arr.length){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        int capacity(){
+            return arr.length;
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack  st = new Stack();
+        st.push(100);
+        st.push(200);
+        st.push(300);
+        st.push(400);
+        st.push(500);
+        st.display();
+//        System.out.println(st.pop());
+//        st.display();
+        System.out.println(st.peak());
+        System.out.println(st.Size());
+        System.out.println(st.isFull());
+        st.push(600);
+        System.out.println(st.capacity());
+    }
+}
+
+# linkedlist implementation in stack
+
+(Q-1)
+    public class Main {
+    static class Node{
+       private int data;
+       private Node next;
+        Node(int data){
+            this.data=data;
+        }
+    }
+   static class LLStack {
+       Node head = null;
+       int size = 0;
+
+       void Push(int x) {
+           Node temp = new Node(x);
+           temp.next = head;
+           head = temp;
+           size++;
+       }
+       void displayrec(Node h){
+           if (h==null){
+               return;
+           }
+           displayrec(h.next);
+           System.out.print(h.data+" ");
+       }
+       void display(){
+           displayrec(head);
+           System.out.println();
+       }
+       void displayrev() {
+           Node temp = head;
+           while (temp != null) {
+               System.out.print(temp.data + " ");
+               temp = temp.next;
+           }
+           System.out.println();
+       }
+
+       int pop() {
+           if (head == null) {
+               System.out.println("Stack Empty");
+               return -1;
+           }
+           int x = head.data;
+           head = head.next;
+           return x;
+       }
+       int size(){
+           return size;
+       }
+       int peak(){
+           if (head == null) {
+               System.out.println("Stack Empty");
+               return -1;
+           }
+           int x = head.data;
+           return x;
+       }
+       boolean isEmpty(){
+           if (size==0){
+               return true;
+           }
+           return false;
+       }
+
+   }
+    public static void main(String[] args) {
+        LLStack sl = new LLStack();
+        sl.Push(100);
+        sl.Push(200);
+        sl.Push(300);
+        sl.Push(400);
+        sl.displayrev();
+        System.out.println(sl.size);
+        System.out.println(sl.pop());
+        System.out.println(sl.peak());
+        System.out.println(sl.isEmpty());
+        sl.display();
+
+    }
+}
+
+
+=====================================================
+(Q-1) Bracket balanced problem
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static boolean isBalanced(String str){
+        Stack <Character> st = new Stack<>();
+        int n = str.length();
+        for (int i=0;i<n;i++) {
+            char ch = str.charAt(i);
+            if (ch == '(') {
+                st.push(ch);
+            } else {
+                if (st.size() == 0) {
+                    return false;
+                }
+                if (st.peek() == '(') {
+                    st.pop();
+                }
+            }
+        }
+                if (st.size() > 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter String = ");
+        String str = sc.next();
+        System.out.println(isBalanced(str));
+    }
+} 
+
+(Q-3) leetcode problem- 20
+
+public class Main {
+    public static Boolean isValid(String s){
+        Stack <Character> st = new Stack<>();
+        int n = s.length();
+        for (int i=0;i<n;i++){
+            char ch = s.charAt(i);
+            if (ch == '(' || ch =='[' || ch =='{'){
+                st.push(ch);
+            } else if (ch == ')' || ch ==']' || ch =='}') {
+                if (st.isEmpty()){
+                    return false;
+                }
+                char top = st.pop();
+                if ((ch == ')' && top != '(') || (ch == ']' && top != '[') || (ch == '}' && top != '{')) {
+                    return false;
+                }
+                }
+            }
+        return st.isEmpty();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter string = ");
+        String s = sc.nextLine();
+        System.out.println(isValid(s));
+    }
+}
+
+(Q-4)dry run ] :- consecutive Subsequences
+public class Main {
+    public static void Order(Stack<Integer> st) {
+        Stack<Integer> rt = new Stack<>();
+        int top = st.pop(); // Pop the first element
+        int count = 1; // Initialize the count of consecutive occurrences to 1
+        
+        while (!st.isEmpty()) {
+            int next = st.pop();
+            
+            if (next == top) {
+                count++; // Increment the count of consecutive occurrences
+            } else {
+                if (count >= 2) {
+                    
+                } else {
+                    // If it occurred only once consecutively, push it onto the result stack
+                    rt.push(top);
+                }
+
+                // Reset the count and update the value of 'top' to the current element
+                count = 1;
+                top = next;
+            }
+        }
+        if (count < 2) {
+            rt.push(top);
+        }
+
+        // Print the result stack
+        System.out.println(rt);
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> st = new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(2);
+        st.push(3);
+        st.push(10);
+        st.push(10);
+        st.push(10);
+        st.push(4);
+        st.push(4);
+        st.push(4);
+        st.push(5);
+        st.push(7);
+        st.push(7);
+        st.push(2);
+        System.out.println(st);
+        System.out.println();
+        Order(st);
+    }
+}
+
+(D)pending (Q-4) consecutive Subsequences by usin array
+
+ public class Main {
+     public static int[] Array(int[] arr){
+         int n = arr.length;
+         Stack <Integer> st = new Stack<>();
+         for (int i=0;i<n;i++){
+             if (st.size()==0 || st.peek()!=arr[i]){
+                 st.push(arr[i]);
+             } else if (arr[i] == st.peek()) {
+                 if (i==n-1 || arr[i] != arr[i+1]){
+                      st.pop();
+                 }
+             }
+         }
+         int[] res = new int[st.size()];
+         int m = res.length;
+         for (int i=m-1;i>=0;i--){
+             res[i] = st.pop();
+         }
+         return res;
+     }
+     public static void main(String[] args) {
+         int[] arr = {1,2,2,3,10,10,10,4,4,4,5,7,7,2};
+         int[] res = Array(arr);
+         for (int i=0;i<res.length;i++){
+             System.out.print(res[i]+" ");
+         }
+     }
+}
+
+
+(Q-5) Next greater element
+public class Main {
+    public static void NextGreater(int[] a){
+        int n = a.length;
+        int[] res = new int[n];
+        for (int i=0;i<n;i++){
+            res[i]=-1;
+            for (int j=i+1;j<n;j++){
+                if (a[i]<a[j]){
+                    res[i]=a[j];
+                    break;
+               }
+            }
+        }
+        for (int j=0;j<n;j++){
+            System.out.print(res[j]+" ");
+        }
+    }
+    public static void main(String[] args) {
+    int[] a = {1,3,2,1,8,6,3,4};
+    NextGreater(a);
+    }
+}
+
+
+dry run (Q-6) previous greater 
